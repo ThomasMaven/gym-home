@@ -15,3 +15,7 @@ security:
 logging:
   level:
     root: info
+server:
+  session:
+    cookie:
+      name: OAUTH2SESSION

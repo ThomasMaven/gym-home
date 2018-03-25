@@ -7,6 +7,6 @@ spring:
         git:
           uri: https://github.com/jpiecuch/config
           search-paths: configs
-  security:
-    user:
-      password: '{noop}mysecret'
+security:
+  user:
+    password: 'mysecret'
