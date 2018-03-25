@@ -20,6 +20,8 @@
         <module>accounts</module>
         <module>authorization</module>
         <module>config</module>
+        <module>web</module>
+        <module>eureka</module>
     </modules>
 
     <properties>
