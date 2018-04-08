@@ -10,9 +10,9 @@ common:
     host: localhost
     port: 8085
     baseUrl: http://${common.authorization.host}:${common.authorization.host}
-    accessTokenUri: ${common.auhtorization.baseUrl}/oauth/token
-    userAuthorizationUri: ${common.auhtorization.baseUrl}/oauth/authorize
-    tokenInfoUri: ${common.auhtorization.baseUrl}/oauth/check_token
+    accessTokenUri: ${common.authorization.baseUrl}/oauth/token
+    userAuthorizationUri: ${common.authorization.baseUrl}/oauth/authorize
+    tokenInfoUri: ${common.authorization.baseUrl}/oauth/check_token
 eureka:
   client:
     serviceUrl:

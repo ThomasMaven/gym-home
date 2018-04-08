@@ -7,3 +7,6 @@ spring:
         git:
           uri: https://github.com/jpiecuch/gym-home/
           search-paths: config/configs, config/configs/{application}
+security:
+  basic:
+    enabled: false
