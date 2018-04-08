@@ -1,8 +1,8 @@
 server:
-  port: 8083
+  port: ${common.eureka.port}
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${common.eureka.host}
   client:
     registerWithEureka: false
     fetchRegistry: false

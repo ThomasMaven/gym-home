@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8081
 spring:
   cloud:
     config:
@@ -7,6 +7,3 @@ spring:
         git:
           uri: https://github.com/jpiecuch/gym-home/
           search-paths: config/configs, config/configs/{application}
-security:
-  user:
-    password: 'mysecret'

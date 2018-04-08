@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: ${common.authorization.port}
   session:
       cookie:
         name: OAUTH2SESSION
@@ -12,7 +12,7 @@ spring:
 security:
   oauth2:
     gym-home:
-      access-token-uri: http://localhost:8080/oauth/token
+      access-token-uri: ${common.authorization.accessTokenUri}
       scope: read
       client-id: authentication
       client-secret: 125a607e-f6ff-4352-ba37-641f081ec904

@@ -1,9 +1,9 @@
 server:
-  port: 8081
+  port: ${common.accounts.port}
 security:
   oauth2:
     resource:
-      token-info-uri: http://localhost:8080/oauth/check_token
+      token-info-uri: ${common.authorization.tokenInfoUri}
       id: accounts
     client:
       client-id: gym-home

@@ -1,6 +1,19 @@
+common:
+  accounts:
+    port: 8082
+  eureka:
+    host: localhost
+    port: 8083
+  web:
+    port: 8084
+  authorization:
+    host: localhost
+    port: 8085
+    baseUrl: http://${common.authorization.host}:${common.authorization.host}
+    accessTokenUri: ${common.auhtorization.baseUrl}/oauth/token
+    userAuthorizationUri: ${common.auhtorization.baseUrl}/oauth/authorize
+    tokenInfoUri: ${common.auhtorization.baseUrl}/oauth/check_token
 eureka:
-  host: localhost
-  port: 8083
   client:
     serviceUrl:
-      defaultZone: http://${eureka.host}:${eureka.port}/eureka
+      defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka
