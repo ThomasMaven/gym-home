@@ -1,0 +1,20 @@
+server:
+  port: 8081
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8080/oauth/check_token
+      id: accounts
+    client:
+      client-id: gym-home
+      client-secret: 0564f7a2-05df-4cf9-bb85-bd4058283553
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/accounts
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8083/eureka

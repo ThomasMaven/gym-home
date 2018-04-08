@@ -1,3 +1,5 @@
+server:
+  port: 8084
 authorization-server:
   url: http://localhost:8080
 security:
