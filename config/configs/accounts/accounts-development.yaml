@@ -14,7 +14,3 @@ spring:
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8083/eureka

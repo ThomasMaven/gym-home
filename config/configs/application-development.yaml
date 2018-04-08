@@ -1,0 +1,6 @@
+eureka:
+  host: localhost
+  port: 8083
+  client:
+    serviceUrl:
+      defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka

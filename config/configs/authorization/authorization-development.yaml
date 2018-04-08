@@ -20,7 +20,3 @@ security:
 logging:
   level:
     root: info
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8083/eureka
