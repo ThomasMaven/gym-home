@@ -3,4 +3,4 @@ eureka:
   port: 8083
   client:
     serviceUrl:
-      defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka
+      defaultZone: http://${eureka.host}:${eureka.port}/eureka
