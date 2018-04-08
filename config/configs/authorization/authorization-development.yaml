@@ -1,5 +1,8 @@
 server:
   port: 8085
+  session:
+      cookie:
+        name: OAUTH2SESSION
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/auth
@@ -17,10 +20,6 @@ security:
 logging:
   level:
     root: info
-server:
-  session:
-    cookie:
-      name: OAUTH2SESSION
 eureka:
   client:
     serviceUrl:

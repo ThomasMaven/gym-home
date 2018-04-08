@@ -13,8 +13,6 @@ security:
       authorized-grant-types: authorization_code
     resource:
       token-info-uri: ${authorization-server.url}/oauth/check_token
-server:
-  port: 8084
 zuul:
   routes:
     angular:

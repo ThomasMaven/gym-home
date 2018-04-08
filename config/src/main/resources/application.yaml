@@ -5,8 +5,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/jpiecuch/config
-          search-paths: configs, configs/{application}
+          uri: https://github.com/jpiecuch/gym-home/
+          search-paths: config/configs, config/configs/{application}
 security:
   user:
     password: 'mysecret'
