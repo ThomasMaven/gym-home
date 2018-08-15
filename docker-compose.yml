@@ -1,0 +1,28 @@
+version: '3'
+services:
+  config:
+    image: "config"
+    ports:
+     - "8081"
+    networks:
+      gym-home:
+        ipv4_address: 172.16.0.2
+  accounts:
+    environment:
+      SPRING_CLOUD_CONFIG_URI: http://172.16.0.2:8081
+
+    image: "accounts"
+    ports:
+      - "8082"
+    networks:
+      - gym-home
+    depends_on:
+      - config
+  db:
+    image: "postgres"
+networks:
+  gym-home:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/16

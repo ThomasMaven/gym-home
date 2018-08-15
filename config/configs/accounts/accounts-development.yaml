@@ -10,7 +10,9 @@ security:
       client-secret: 0564f7a2-05df-4cf9-bb85-bd4058283553
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/accounts
+    host: localhost
+    port: 5432
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/accounts
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
