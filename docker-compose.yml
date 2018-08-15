@@ -10,6 +10,7 @@ services:
     environment:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
       SPRING_DATASOURCE_HOST: db
+      COMMON_EUREKA_HOST: eureka
     image: "accounts"
     ports:
       - "8082"
@@ -17,7 +18,18 @@ services:
       - gym-home
     depends_on:
       - config
+  eureka:
+    environment:
+      SPRING_CLOUD_CONFIG_URI: http://config:8081
+      COMMON_EUREKA_HOST: eureka
+    image: "eureka"
+    networks:
+      - gym-home
+    depends_on:
+      - config
   db:
+    environment:
+      POSTGRES_DB: accounts
     image: "postgres"
     networks:
       - gym-home
