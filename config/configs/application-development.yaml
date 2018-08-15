@@ -17,3 +17,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka
+spring:
+  cloud:
+    config:
+      override-system-properties: false
