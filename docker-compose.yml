@@ -21,8 +21,9 @@ services:
   eureka:
     environment:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
-      COMMON_EUREKA_HOST: eureka
     image: "eureka"
+    ports:
+      - "8083"
     networks:
       - gym-home
     depends_on:
