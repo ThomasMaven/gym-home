@@ -10,9 +10,9 @@ common:
     host: localhost
     port: 8085
     baseUrl: http://${common.authorization.host}:${common.authorization.host}
-    accessTokenUri: ${common.authorization.baseUrl}/oauth/token
-    userAuthorizationUri: ${common.authorization.baseUrl}/oauth/authorize
-    tokenInfoUri: ${common.authorization.baseUrl}/oauth/check_token
+    accessTokenUri: http://${common.authorization.baseUrl}/oauth/token
+    userAuthorizationUri: http://${common.authorization.baseUrl}/oauth/authorize
+    tokenInfoUri: http://${common.authorization.baseUrl}/oauth/check_token
 spring:
   cloud:
     config:
