@@ -21,3 +21,7 @@ security:
 logging:
   level:
     root: info
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka
