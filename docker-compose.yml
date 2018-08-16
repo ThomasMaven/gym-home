@@ -2,18 +2,15 @@ version: '3'
 services:
   config:
     image: "config"
-    ports:
-     - "8081"
     networks:
       - gym-home
   accounts:
     environment:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
-      SPRING_DATASOURCE_HOST: db
+      SPRING_DATASOURCE_HOST: accountsdb
       COMMON_EUREKA_HOST: eureka
+      COMMON_AUTHORIZATION_HOST: 0.0.0.0
     image: "accounts"
-    ports:
-      - "8082"
     networks:
       - gym-home
     depends_on:
@@ -22,15 +19,31 @@ services:
     environment:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
     image: "eureka"
-    ports:
-      - "8083"
     networks:
       - gym-home
     depends_on:
       - config
-  db:
+  authorization:
+    environment:
+      SPRING_CLOUD_CONFIG_URI: http://config:8081
+      SPRING_DATASOURCE_HOST: authorizationdb
+      COMMON_EUREKA_HOST: eureka
+    image: "authorization"
+    ports:
+      - "8085:8085"
+    networks:
+      - gym-home
+    depends_on:
+      - config
+  accountsdb:
     environment:
       POSTGRES_DB: accounts
+    image: "postgres"
+    networks:
+      - gym-home
+  authorizationdb:
+    environment:
+      POSTGRES_DB: auth
     image: "postgres"
     networks:
       - gym-home
