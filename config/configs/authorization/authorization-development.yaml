@@ -5,7 +5,8 @@ server:
         name: OAUTH2SESSION
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/auth
+    host: localhost
+    url: jdbc:postgresql://${spring.datasource.host}:5432/auth
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
