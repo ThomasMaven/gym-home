@@ -19,3 +19,7 @@ zuul:
     accounts:
       path: /accounts/**
       serviceId: accounts
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka
