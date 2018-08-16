@@ -28,9 +28,21 @@ services:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
       SPRING_DATASOURCE_HOST: authorizationdb
       COMMON_EUREKA_HOST: eureka
+      COMMON_AUTHORIZATION_HOST: 0.0.0.0
     image: "authorization"
     ports:
       - "8085:8085"
+    networks:
+      - gym-home
+    depends_on:
+      - config
+  web:
+    environment:
+      SPRING_CLOUD_CONFIG_URI: http://config:8081
+      COMMON_EUREKA_HOST: eureka
+    image: "web"
+    ports:
+      - "8084:8084"
     networks:
       - gym-home
     depends_on:
