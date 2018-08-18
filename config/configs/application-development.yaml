@@ -17,3 +17,8 @@ spring:
   cloud:
     config:
       override-system-properties: false
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
