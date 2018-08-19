@@ -1,5 +1,8 @@
 server:
   port: 8084
+  session:
+      cookie:
+        name: WEBSESSION
 security:
   oauth2:
     client:
