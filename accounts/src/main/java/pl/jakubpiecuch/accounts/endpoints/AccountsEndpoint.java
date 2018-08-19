@@ -19,7 +19,6 @@ public class AccountsEndpoint {
         this.accountsServices = accountsServices;
     }
 
-    @PreAuthorize("hasRole('user')")
     @GetMapping(path = "/users/{name}")
     public AccountDto getUser(OAuth2Authentication authentication, @PathVariable("name") String name) {
         return accountsServices.get(getClientId(authentication))
