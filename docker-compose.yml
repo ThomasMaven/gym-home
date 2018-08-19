@@ -39,6 +39,7 @@ services:
   web:
     environment:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
+      SPRING_CLOUD_CONSUL_HOST: consul
     image: "web"
     ports:
       - "8084:8084"
