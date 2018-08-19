@@ -6,3 +6,9 @@ spring:
   cloud:
     config:
       uri: http://localhost:8081
+      fail-fast: true
+      username: config
+      password: welcome
+management:
+  security:
+    ena

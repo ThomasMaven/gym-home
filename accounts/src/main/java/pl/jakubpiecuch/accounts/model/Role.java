@@ -41,7 +41,8 @@ public class Role {
 
     @Transient
     public String[] getGrantedPermissions() {
-        return ADMIN_ROLE.equals(name) ? Permissions.getAllPermissions() : USER_ROLE.equals(name) ? Permissions.getUserPermissions() : StringUtils.splitByWholeSeparatorPreserveAllTokens(permissions, PERMISSIONS_SEPARATOR);
+        return ADMIN_ROLE.equals(name) ? Permissions.getAllPermissions() : USER_ROLE.equals(name) ?
+                Permissions.getUserPermissions() : StringUtils.splitByWholeSeparatorPreserveAllTokens(permissions, PERMISSIONS_SEPARATOR);
     }
 
     public void setGrantedPermissions(String[] grantedPermissions) {

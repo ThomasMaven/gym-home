@@ -48,3 +48,6 @@ create table oauth_approvals (
   expiresAt TIMESTAMP,
   lastModifiedAt TIMESTAMP
 );
+
+INSERT INTO oauth_client_details (client_id, resource_ids, client_secret, scope, authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity, refresh_token_validity, additional_information, autoapprove) VALUES ('authentication', 'accounts', '{noop}125a607e-f6ff-4352-ba37-641f081ec904', 'read', 'client_credentials', NULL, 'ROLE_user', NULL, NULL, NULL, NULL);
+INSERT INTO oauth_client_details (client_id, resource_ids, client_secret, scope, authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity, refresh_token_validity, additional_information, autoapprove) VALUES ('gym-home', 'accounts', '{noop}0564f7a2-05df-4cf9-bb85-bd4058283553', 'read,write', 'authorization_code,password,refresh_token', NULL, NULL, NULL, NULL, NULL, 'true');
