@@ -16,6 +16,9 @@ security:
     resource:
       token-info-uri: ${common.authorization.tokenInfoUri}
 zuul:
+  sensitive-headers:
+    - Cookie
+    - Set-Cookie
   routes:
     angular:
       path: /**
