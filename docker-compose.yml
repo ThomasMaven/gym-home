@@ -17,6 +17,8 @@ services:
       - gym-home
     depends_on:
       - config
+    restart:
+      always
   consul:
     image: "consul"
     networks:
@@ -28,7 +30,7 @@ services:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
       SPRING_DATASOURCE_HOST: authorizationdb
       SPRING_CLOUD_CONSUL_HOST: consul
-      COMMON_AUTHORIZATION_HOST: 0.0.0.0
+      COMMON_AUTHORIZATION_HOST: authorization
     image: "authorization"
     ports:
       - "8085:8085"
@@ -40,6 +42,8 @@ services:
     environment:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
       SPRING_CLOUD_CONSUL_HOST: consul
+      COMMON_AUTHORIZATION_ACCESSTOKENURI: http://authorization:8085/oauth/token
+      COMMON_AUTHORIZATION_TOKENINFOURI: http://authorization:8085/oauth/check_token
     image: "web"
     ports:
       - "8084:8084"
@@ -47,6 +51,8 @@ services:
       - gym-home
     depends_on:
       - config
+    restart:
+      always
   accountsdb:
     environment:
       POSTGRES_DB: accounts
