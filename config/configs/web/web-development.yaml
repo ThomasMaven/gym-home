@@ -14,7 +14,7 @@ security:
       scope: read, write
       authorized-grant-types: authorization_code
     resource:
-      token-info-uri: ${common.authorization.tokenInfoUri}
+      token-info-uri: ${common.authorization.tokeninfouri}
 zuul:
   sensitive-headers:
     - Cookie
