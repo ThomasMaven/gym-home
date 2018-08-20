@@ -9,6 +9,3 @@ spring:
       fail-fast: true
       username: config
       password: welcome
-management:
-  security:
-    ena

@@ -11,7 +11,7 @@ common:
     port: 8085
     baseUrl: http://${common.authorization.host}:${common.authorization.port}
     accessTokenUri: ${common.authorization.baseUrl}/oauth/token
-    userAuthorizationUri: ${common.authorization.baseUrl}/oauth/authorize
+    userauthorizationuri: ${common.authorization.baseUrl}/oauth/authorize
     tokenInfoUri: ${common.authorization.baseUrl}/oauth/check_token
 spring:
   cloud:
