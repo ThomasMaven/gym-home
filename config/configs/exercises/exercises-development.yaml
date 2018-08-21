@@ -3,4 +3,5 @@ server:
 verticles:
   http:
     options:
-      guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
+      config:
+        guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
