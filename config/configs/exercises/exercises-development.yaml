@@ -1,2 +1,6 @@
 server:
   port: 8086
+verticles:
+  http:
+    options:
+      guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
