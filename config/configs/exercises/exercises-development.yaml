@@ -6,4 +6,4 @@ verticles:
         guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
         server:
           port: 8086
-          host: locahost
+          host: localhost
