@@ -11,3 +11,6 @@ spring:
     user:
       name: config
       password: welcome
+logging:
+  level:
+    ROOT: error

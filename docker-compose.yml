@@ -10,17 +10,32 @@ services:
       SPRING_DATASOURCE_HOST: accountsdb
       SPRING_CLOUD_CONSUL_HOST: consul
       COMMON_AUTHORIZATION_HOST: authorization
+      LOGGING_LEVEL_ROOT: error
     image: "accounts"
     ports:
-      - "8082:8082"
+    - "8082:8082"
+    networks:
+    - gym-home
+    depends_on:
+    - config
+  exercises-service:
+    environment:
+      verticles.http.options.config.server.host: exercises-service
+      verticles.http.options.config.oauth2.checkTokenUri: http://authorization:8085/oauth/check_token
+      verticles.http.options.config.consul.host: consul
+      SPRING_CLOUD_CONFIG_URI: http://config:8081
+    image: "exercises"
     networks:
       - gym-home
+    ports:
+      - "8086:8086"
     depends_on:
       - config
     restart:
       always
   consul:
     image: "consul"
+    command: "agent -log-level err -dev -client 0.0.0.0"
     networks:
       - gym-home
     ports:
@@ -31,6 +46,7 @@ services:
       SPRING_DATASOURCE_HOST: authorizationdb
       SPRING_CLOUD_CONSUL_HOST: consul
       COMMON_AUTHORIZATION_HOST: authorization
+      LOGGING_LEVEL_ROOT: error
     image: "authorization"
     ports:
       - "8085:8085"
@@ -44,6 +60,7 @@ services:
       SPRING_CLOUD_CONSUL_HOST: consul
       COMMON_AUTHORIZATION_ACCESSTOKENURI: http://authorization:8085/oauth/token
       COMMON_AUTHORIZATION_TOKENINFOURI: http://authorization:8085/oauth/check_token
+      LOGGING_LEVEL_ROOT: error
     image: "web"
     ports:
       - "8084:8084"
