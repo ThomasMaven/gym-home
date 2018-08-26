@@ -26,6 +26,9 @@ zuul:
     accounts:
       path: /accounts/**
       serviceId: accounts
+    exercises:
+      path: /exercises/**
+      serviceId: exercises
 eureka:
   client:
     serviceUrl:
