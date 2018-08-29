@@ -19,4 +19,4 @@ verticles:
     name: java-guice:pl.jakubpiecuch.exercises.service.ServiceVerticle
     options:
       config:
-        guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
+        guice_binder: pl.jakubpiecuch.exercises.service.ServiceBinder
