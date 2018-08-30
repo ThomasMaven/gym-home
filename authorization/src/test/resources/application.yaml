@@ -1,0 +1,15 @@
+server:
+  session:
+      cookie:
+        name: OAUTH2SESSION
+security:
+  oauth2:
+    gym-home:
+      access-token-uri: http://localhost:8090/accesstokenuri
+      scope: read
+      client-id: authentication
+      client-secret: 125a607e-f6ff-4352-ba37-641f081ec904
+      id: accounts
+logging:
+  level:
+    root: info
