@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: consul-service
+spec:
+  selector:
+    app: consul
+  ports:
+  - protocol: TCP
+    port: 8500
+    targetPort: 8500

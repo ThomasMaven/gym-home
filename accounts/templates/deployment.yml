@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts-deployment
+  labels:
+    app: accounts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: accounts
+  template:
+    metadata:
+      labels:
+        app: accounts
+    spec:
+      containers:
+      - name: accounts
+        image: jpiecuch/accounts:1.0
+        ports:
+        - containerPort: 8082
+        env:
+          - name: LOGGING_LEVEL_ROOT
+            value: debug
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s
+          - name: SPRING_DATASOURCE_HOST
+            value: accounts-postgres-service
+          - name: COMMON_AUTHORIZATION_HOST
+            value: authorization-service
+          - name: SPRING_CLOUD_CONFIG_URI
+            value: http://config-service:8081
+          - name: SPRING_CLOUD_CONSUL_ENABLED
+            value: "false"
+          - name: SPRING_CLOUD_CONSUL_CONFIG_ENABLED
+            value: "false"
+          - name: SPRING_CLOUD_BUS_ENABLED
+            value: "false"

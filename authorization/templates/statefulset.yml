@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: auth-postgres
+spec:
+  selector:
+    matchLabels:
+      app: auth-postgres
+  serviceName: auth-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: auth-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:10.4
+        imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 5432
+        envFrom:
+        - configMapRef:
+            name: auth-postgres-config
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgredb
+      volumes:
+      - name: postgredb
+        persistentVolumeClaim:
+          claimName: auth-postgres-pv-claim

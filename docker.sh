@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
-docker build ./accounts/ -t accounts
-docker build ./authorization/ -t authorization
-docker build ./config/ -t config
-docker build ./eureka/ -t eureka
-docker build ./web/ -t web
-docker build ./exercises/ -t exercises
+push_service() {
+    name=$1
+    docker build ./$name/ -t $name
+    docker tag $name jpiecuch/$name:1.0
+    docker push jpiecuch/$name:1.0
+}
+
+push_service accounts
+push_service authorization
+push_service config
+push_service web
+push_service exercises

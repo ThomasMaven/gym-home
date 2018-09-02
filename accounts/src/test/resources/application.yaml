@@ -6,6 +6,9 @@ security:
     client:
       client-id: gym-home
       client-secret: 0564f7a2-05df-4cf9-bb85-bd4058283553
+  cloud:
+    discovery:
+      enabled: false
 eureka:
   client:
     enabled: false

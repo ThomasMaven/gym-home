@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: accounts-service
+spec:
+  selector:
+    app: accounts
+  ports:
+  - protocol: TCP
+    port: 8082
+    targetPort: 8082

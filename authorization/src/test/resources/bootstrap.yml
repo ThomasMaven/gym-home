@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: authorization
+  profiles:
+    active: test
+  cloud:
+    bus:
+      enabled: false
+    consul:
+      enabled: false
+      config:
+        enabled: false
+    kubernetes:
+      discovery:
+        enabled: false

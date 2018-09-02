@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deployment
+  labels:
+    app: auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: config
+        image: jpiecuch/authorization:1.0
+        ports:
+        - containerPort: 8085
+        env:
+        - name: LOGGING_LEVEL_ROOT
+          value: debug
+        - name: SPRING_PROFILES_ACTIVE
+          value: k8s
+        - name: SPRING_DATASOURCE_HOST
+          value: auth-postgres-service
+        - name: COMMON_AUTHORIZATION_HOST
+          value: authorization-service
+        - name: SPRING_CLOUD_CONFIG_URI
+          value: http://config-service:8081
+        - name: SPRING_CLOUD_CONSUL_ENABLED
+          value: "false"
+        - name: SPRING_CLOUD_CONSUL_CONFIG_ENABLED
+          value: "false"
+        - name: SPRING_CLOUD_BUS_ENABLED
+          value: "false"

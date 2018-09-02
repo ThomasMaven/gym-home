@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: accounts-postgres-service
+spec:
+  selector:
+    app: accounts-postgres
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
