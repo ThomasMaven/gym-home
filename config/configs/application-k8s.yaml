@@ -10,3 +10,7 @@ common:
     accessTokenUri: ${common.authorization.baseUrl}/oauth/token
     userauthorizationuri: ${common.authorization.baseUrl}/oauth/authorize
     tokenInfoUri: ${common.authorization.baseUrl}/oauth/check_token
+spring:
+  cloud:
+    config:
+      override-system-properties: false
