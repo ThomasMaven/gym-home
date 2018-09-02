@@ -11,8 +11,9 @@ spring:
     password: root
     driver-class-name: org.postgresql.Driver
   cloud:
-    kubernetes:
-      discovery:
+    consul:
+      enabled: false
+      config:
         enabled: false
 security:
   oauth2:
@@ -25,7 +26,3 @@ security:
 logging:
   level:
     root: info
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka
