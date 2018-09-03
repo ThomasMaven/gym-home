@@ -17,17 +17,20 @@ spec:
       containers:
       - name: config
         image: jpiecuch/authorization:1.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 8085
         env:
         - name: LOGGING_LEVEL_ROOT
-          value: debug
+          value: info
         - name: SPRING_PROFILES_ACTIVE
           value: k8s
         - name: SPRING_DATASOURCE_HOST
           value: auth-postgres-service
-        - name: COMMON_AUTHORIZATION_HOST
-          value: authorization-service
+        - name: COMMON_AUTHORIZATION_ACCESSTOKENURI
+          value: http://internal-auth-service:8085/oauth/token
+        - name: COMMON_AUTHORIZATION_TOKENINFOURI
+          value: http://internal-auth-service:8085/oauth/check_token
         - name: SPRING_CLOUD_CONFIG_URI
           value: http://config-service:8081
         - name: SPRING_CLOUD_CONSUL_ENABLED

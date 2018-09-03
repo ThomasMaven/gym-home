@@ -17,17 +17,18 @@ spec:
       containers:
       - name: accounts
         image: jpiecuch/accounts:1.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 8082
         env:
           - name: LOGGING_LEVEL_ROOT
-            value: debug
+            value: info
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
           - name: SPRING_DATASOURCE_HOST
             value: accounts-postgres-service
           - name: COMMON_AUTHORIZATION_HOST
-            value: authorization-service
+            value: internal-auth-service
           - name: SPRING_CLOUD_CONFIG_URI
             value: http://config-service:8081
           - name: SPRING_CLOUD_CONSUL_ENABLED
