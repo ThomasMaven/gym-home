@@ -1,9 +1,6 @@
 common:
   accounts:
     port: 8082
-  eureka:
-    host: localhost
-    port: 8083
   web:
     port: 8084
   authorization:
@@ -20,3 +17,6 @@ spring:
     consul:
       host: localhost
       port: 8500
+    kubernetes:
+      discovery:
+        enabled: false

@@ -21,7 +21,6 @@
         <module>authorization</module>
         <module>config</module>
         <module>web</module>
-        <module>eureka</module>
         <module>exercises</module>
     </modules>
 

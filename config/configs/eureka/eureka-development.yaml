@@ -1,8 +1,0 @@
-server:
-  port: ${common.eureka.port}
-eureka:
-  instance:
-    hostname: ${common.eureka.host}
-  client:
-    registerWithEureka: false
-    fetchRegistry: false

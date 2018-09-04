@@ -29,7 +29,3 @@ zuul:
     exercises:
       path: /exercises/**
       serviceId: exercises
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${common.eureka.host}:${common.eureka.port}/eureka
