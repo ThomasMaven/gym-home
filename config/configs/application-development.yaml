@@ -20,3 +20,5 @@ spring:
     kubernetes:
       discovery:
         enabled: false
+      ribbon:
+        enabled: false
