@@ -11,6 +11,8 @@ common:
     userauthorizationuri: ${common.authorization.baseUrl}/oauth/authorize
     tokenInfoUri: ${common.authorization.baseUrl}/oauth/check_token
 spring:
+  autoconfigure:
+    exclude: org.springframework.cloud.kubernetes.discovery.KubernetesDiscoveryClientAutoConfiguration
   cloud:
     config:
       override-system-properties: false
