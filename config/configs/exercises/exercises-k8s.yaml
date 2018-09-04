@@ -8,7 +8,7 @@ verticles:
           port: 8086
           host: 0.0.0.0
         oauth2:
-          checkTokenUri: http://authorization/oauth/check_token
+          checkTokenUri: http://internal-auth-service/oauth/check_token
           client:
             clientId: gym-home
             clientSecret: 0564f7a2-05df-4cf9-bb85-bd4058283553
