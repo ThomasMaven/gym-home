@@ -37,7 +37,7 @@ oauth2:
       resourceIds: accounts
       authorizedGrantTypes: authorization_code,password,refresh_token
       accessTokenValiditySeconds: 3600
-      autoApprovedScopes: .*
+      autoApproveScopes: .*
 logging:
   level:
     root: info
