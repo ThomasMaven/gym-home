@@ -25,14 +25,14 @@ security:
 oauth2:
   clients:
     - clientId: authentication
-      clientSecret: {noop}125a607e-f6ff-4352-ba37-641f081ec904
+      clientSecret: "{noop}125a607e-f6ff-4352-ba37-641f081ec904"
       scope: read
       resourceIds: accounts
       authorizedGrantTypes: client_credentials
       refreshTokenValiditySeconds: 21600
       accessTokenValiditySeconds: 3600
     - clientId: gym-home
-      clientSecret: {noop}0564f7a2-05df-4cf9-bb85-bd4058283553
+      clientSecret: "{noop}0564f7a2-05df-4cf9-bb85-bd4058283553"
       scope: read,write
       resourceIds: accounts
       authorizedGrantTypes: authorization_code,password,refresh_token
