@@ -15,7 +15,7 @@ spec:
         app: auth
     spec:
       containers:
-      - name: config
+      - name: auth
         image: jpiecuch/authorization:1.0
         imagePullPolicy: Always
         ports:
@@ -25,8 +25,6 @@ spec:
           value: info
         - name: SPRING_PROFILES_ACTIVE
           value: k8s
-        - name: SPRING_DATASOURCE_HOST
-          value: auth-postgres-service
         - name: COMMON_AUTHORIZATION_ACCESSTOKENURI
           value: http://internal-auth-service:8085/oauth/token
         - name: COMMON_AUTHORIZATION_TOKENINFOURI

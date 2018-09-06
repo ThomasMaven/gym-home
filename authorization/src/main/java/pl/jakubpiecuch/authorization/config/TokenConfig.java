@@ -7,18 +7,10 @@ import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsAccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
-
-import javax.sql.DataSource;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 @Configuration
 public class TokenConfig {
-
-    private final DataSource dataSource;
-
-    public TokenConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
 
     @Bean
     public AccessTokenProvider getAccessTokenProvider() {
@@ -33,6 +25,6 @@ public class TokenConfig {
 
     @Bean
     public TokenStore getTokenStore() {
-        return new JdbcTokenStore(this.dataSource);
+        return new InMemoryTokenStore();
     }
 }

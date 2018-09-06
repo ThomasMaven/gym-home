@@ -1,3 +1,0 @@
-databaseChangeLog:
-- include:
-    file: db/migration/0001-schema.sql
