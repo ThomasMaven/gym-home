@@ -3,17 +3,6 @@ server:
   session:
       cookie:
         name: OAUTH2SESSION
-spring:
-  datasource:
-    host: localhost
-    url: jdbc:postgresql://${spring.datasource.host}:5432/auth
-    username: postgres
-    password: root
-    driver-class-name: org.postgresql.Driver
-  cloud:
-    kubernetes:
-      discovery:
-        enabled: false
 security:
   oauth2:
     gym-home:
