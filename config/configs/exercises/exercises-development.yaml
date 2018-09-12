@@ -5,7 +5,7 @@ verticles:
           guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
           server:
             port: 8086
-            host: exercises
+            host: localhost
           oauth2:
             checkTokenUri: http://localhost:8085/oauth/check_token
             client:
