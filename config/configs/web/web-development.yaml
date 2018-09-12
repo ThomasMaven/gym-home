@@ -19,6 +19,7 @@ zuul:
   sensitive-headers:
     - Cookie
     - Set-Cookie
+  ignoredPatterns: /actuator/health
   routes:
     angular:
       path: /**
