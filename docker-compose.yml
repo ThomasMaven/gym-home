@@ -20,10 +20,8 @@ services:
     - config
   exercises-service:
     environment:
-      verticles.http.options.config.server.host: exercises-service
-      verticles.http.options.config.oauth2.checkTokenUri: http://authorization:8085/oauth/check_token
-      verticles.http.options.config.consul.host: consul
       SPRING_CLOUD_CONFIG_URI: http://config:8081
+      ACTIVE_PROFILE: dc
     image: "exercises"
     networks:
       - gym-home
@@ -43,7 +41,6 @@ services:
   authorization:
     environment:
       SPRING_CLOUD_CONFIG_URI: http://config:8081
-      SPRING_DATASOURCE_HOST: authorizationdb
       SPRING_CLOUD_CONSUL_HOST: consul
       COMMON_AUTHORIZATION_HOST: authorization
       LOGGING_LEVEL_ROOT: error
@@ -73,12 +70,6 @@ services:
   accountsdb:
     environment:
       POSTGRES_DB: accounts
-    image: "postgres"
-    networks:
-      - gym-home
-  authorizationdb:
-    environment:
-      POSTGRES_DB: auth
     image: "postgres"
     networks:
       - gym-home
