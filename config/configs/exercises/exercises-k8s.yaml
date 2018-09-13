@@ -1,19 +1,21 @@
 verticles:
-    - name: java-guice:pl.jakubpiecuch.exercises.http.HttpVerticle
-      options:
-        config:
-          guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
-          server:
-            port: 8086
-            host: 0.0.0.0
-          oauth2:
-            checkTokenUri: http://internal-auth-service:8085/oauth/check_token
-            client:
-              clientId: gym-home
-          consul:
-            host: localhost
-            port: 8500
-    - name: java-guice:pl.jakubpiecuch.exercises.service.ServiceVerticle
-      options:
-        config:
-          guice_binder: pl.jakubpiecuch.exercises.service.ServiceBinder
+  http:
+    name: java-guice:pl.jakubpiecuch.exercises.http.HttpVerticle
+    options:
+      config:
+        guice_binder: pl.jakubpiecuch.exercises.http.HttpBinder
+        server:
+          port: 8086
+          host: 0.0.0.0
+        oauth2:
+          checkTokenUri: http://internal-auth-service:8085/oauth/check_token
+          client:
+            clientId: gym-home
+        consul:
+          host: localhost
+          port: 8500
+  service:
+    name: java-guice:pl.jakubpiecuch.exercises.service.ServiceVerticle
+    options:
+      config:
+        guice_binder: pl.jakubpiecuch.exercises.service.ServiceBinder
