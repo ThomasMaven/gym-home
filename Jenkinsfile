@@ -13,7 +13,18 @@ pipeline {
         }
         stage('Build Images') {
             steps {
-                sh 'mvn dockerfile:build'
+                sh """
+                    cd accounts
+                    mvn dockerfile:build
+                    cd ../authorization
+                    mvn dockerfile:build
+                    cd ../config
+                    mvn dockerfile:build
+                    cd ../exercises
+                    mvn dockerfile:build
+                    cd ../web
+                    mvn dockerfile:build
+                """
             }
         }
     }
