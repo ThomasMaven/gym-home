@@ -7,11 +7,7 @@ pipeline {
         stage("SSH Steps Rocks!") {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'dev', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
-                    step {
-                        remote.user = userName
-                        remote.identityFile = identity
-                        sshScript remote: remote, script: "accounts/deploy/deploy.sh"
-                    }
+                    sshScript remote: remote, script: "accounts/deploy/deploy.sh"
                 }
             }
         }
