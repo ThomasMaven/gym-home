@@ -4,8 +4,8 @@ pipeline {
     }
     agent any
     stages {
-        steps {
-            stage("SSH Steps Rocks!") {
+        stage("SSH Steps Rocks!") {
+            steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'dev', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
                     remote.user = userName
                     remote.identityFile = identity
