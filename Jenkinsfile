@@ -59,20 +59,20 @@ pipeline {
                         remote.user = username
                         remote.password = password
                     }
-                    sshPut remote: remote, from: 'config/templates', into: 'templates/config'
-                    sshCommand remote: remote, command: 'kubectl apply -f templates/config'
+                    sshPut remote: remote, from: 'config/templates', into: 'config/templates'
+                    sshCommand remote: remote, command: 'kubectl apply -f config/templates'
 
-                    sshPut remote: remote, from: 'accounts/templates', into: 'templates/accounts'
-                    sshCommand remote: remote, command: 'kubectl apply -f templates/accounts'
+                    sshPut remote: remote, from: 'accounts/templates', into: 'accounts/templates'
+                    sshCommand remote: remote, command: 'kubectl apply -f accounts/templates'
 
-                    sshPut remote: remote, from: 'authorization/templates', into: 'templates/authorization'
-                    sshCommand remote: remote, command: 'kubectl apply -f templates/authorization'
+                    sshPut remote: remote, from: 'authorization/templates', into: 'authorization/templates'
+                    sshCommand remote: remote, command: 'kubectl apply -f authorization/templates'
 
-                    sshPut remote: remote, from: 'exercises/templates', into: 'templates/exercises'
-                    sshCommand remote: remote, command: 'kubectl apply -f templates/exercises'
+                    sshPut remote: remote, from: 'exercises/templates', into: 'exercises/templates'
+                    sshCommand remote: remote, command: 'kubectl apply -f exercises/templates'
 
-                    sshPut remote: remote, from: 'web/templates', into: 'templates/web'
-                    sshCommand remote: remote, command: 'kubectl apply -f templates/web'
+                    sshPut remote: remote, from: 'web/templates', into: 'web/templates'
+                    sshCommand remote: remote, command: 'kubectl apply -f web/templates'
                 }
             }
         }
