@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: jpiecuch/authorization:1.0
+        image: jpiecuch/authorization:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8085

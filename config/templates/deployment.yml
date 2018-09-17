@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: config
-        image: jpiecuch/config:1.0
+        image: jpiecuch/config:latest
         ports:
         - containerPort: 8081
         env:
