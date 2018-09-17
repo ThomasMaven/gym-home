@@ -14,7 +14,7 @@ pipeline {
         stage('Build Images') {
             steps {
                 script {
-                    def commitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
+                    commitId = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
                 }
                 sh """
                     cd accounts
@@ -52,7 +52,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dev-ssh', usernameVariable: 'username', passwordVariable: 'password')]) {
                     script {
-                        def remote = [:]
+                        remote = [:]
                         remote.name = 'dev'
                         remote.host = '127.0.0.1'
                         remote.allowAnyHosts = true
