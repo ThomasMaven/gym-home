@@ -15,15 +15,15 @@ pipeline {
             steps {
                 sh """
                     cd accounts
-                    mvn dockerfile:build
+                    mvn dockerfile:build -dockerfile.tag=${env.BUILD_NUMBER}
                     cd ../authorization
-                    mvn dockerfile:build
+                    mvn dockerfile:build -dockerfile.tag=${env.BUILD_NUMBER}
                     cd ../config
-                    mvn dockerfile:build
+                    mvn dockerfile:build -dockerfile.tag=${env.BUILD_NUMBER}
                     cd ../exercises
-                    mvn dockerfile:build
+                    mvn dockerfile:build -dockerfile.tag=${env.BUILD_NUMBER}
                     cd ../web
-                    mvn dockerfile:build
+                    mvn dockerfile:build -dockerfile.tag=${env.BUILD_NUMBER}
                 """
             }
         }
