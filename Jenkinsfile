@@ -13,17 +13,20 @@ pipeline {
         }
         stage('Build Images') {
             steps {
+                script {
+                    def commitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
+                }
                 sh """
                     cd accounts
-                    mvn dockerfile:build -Ddockerfile.tag=${env.BUILD_NUMBER}
+                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
                     cd ../authorization
-                    mvn dockerfile:build -Ddockerfile.tag=${env.BUILD_NUMBER}
+                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
                     cd ../config
-                    mvn dockerfile:build -Ddockerfile.tag=${env.BUILD_NUMBER}
+                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
                     cd ../exercises
-                    mvn dockerfile:build -Ddockerfile.tag=${env.BUILD_NUMBER}
+                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
                     cd ../web
-                    mvn dockerfile:build -Ddockerfile.tag=${env.BUILD_NUMBER}
+                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
                 """
             }
         }
