@@ -5,9 +5,6 @@ remote.user = 'jakub'
 remote.allowAnyHosts = true
 
 pipeline {
-    environment {
-        registryCredential = 'dockerhub'
-    }
     agent any
     stages {
         stage('Build') {
@@ -38,18 +35,20 @@ pipeline {
         }
         stage('Push Images') {
             steps {
-                sh """
-                    cd accounts
-                    mvn dockerfile:push
-                    cd ../authorization
-                    mvn dockerfile:push
-                    cd ../config
-                    mvn dockerfile:push
-                    cd ../exercises
-                    mvn dockerfile:push
-                    cd ../web
-                    mvn dockerfile:push
-                """
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
+                    sh """
+                        cd accounts
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        cd ../authorization
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        cd ../config
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        cd ../exercises
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        cd ../web
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                    """
+                }
             }
         }
         stage("Deploy") {
