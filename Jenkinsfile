@@ -54,18 +54,6 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'dev', keyFileVariable: 'identity', passphraseVariable: 'passphrase', usernameVariable: 'userName')]) {
-                    script {
-                        remote.identity = identity
-                        remote.user = userName
-                        remote.passphrase = passphrase
-                    }
-                    sshScript remote: remote, script: "accounts/deploy/deploy.sh"
-                }
-            }
-        }
-        stage("Deploy") {
-            steps {
                 withCredentials([usernamePassword(credentialsId: 'dev-pass', usernameVariable: 'username', passwordVariable: 'password')]) {
                     script {
                         remote.user = username
