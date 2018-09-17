@@ -32,15 +32,15 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
                     sh """
                         cd accounts
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password} -dockerfile.tag=${env.BUILD_NUMBER}
                         cd ../authorization
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password} -dockerfile.tag=${env.BUILD_NUMBER}
                         cd ../config
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password} -dockerfile.tag=${env.BUILD_NUMBER}
                         cd ../exercises
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password} -dockerfile.tag=${env.BUILD_NUMBER}
                         cd ../web
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password} -dockerfile.tag=${env.BUILD_NUMBER}
                     """
                 }
             }
