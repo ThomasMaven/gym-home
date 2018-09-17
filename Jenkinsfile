@@ -59,19 +59,19 @@ pipeline {
                         remote.user = username
                         remote.password = password
                     }
-                    sshPut remote: remote, from: 'config/templates', into: 'config/templates'
+                    sshPut remote: remote, from: 'config/templates', into: 'config'
                     sshCommand remote: remote, command: 'kubectl apply -f config/templates'
 
-                    sshPut remote: remote, from: 'accounts/templates', into: 'accounts/templates'
+                    sshPut remote: remote, from: 'accounts/templates', into: 'accounts'
                     sshCommand remote: remote, command: 'kubectl apply -f accounts/templates'
 
-                    sshPut remote: remote, from: 'authorization/templates', into: 'authorization/templates'
+                    sshPut remote: remote, from: 'authorization/templates', into: 'authorization'
                     sshCommand remote: remote, command: 'kubectl apply -f authorization/templates'
 
-                    sshPut remote: remote, from: 'exercises/templates', into: 'exercises/templates'
+                    sshPut remote: remote, from: 'exercises/templates', into: 'exercises'
                     sshCommand remote: remote, command: 'kubectl apply -f exercises/templates'
 
-                    sshPut remote: remote, from: 'web/templates', into: 'web/templates'
+                    sshPut remote: remote, from: 'web/templates', into: 'web'
                     sshCommand remote: remote, command: 'kubectl apply -f web/templates'
                 }
             }
