@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
+    }
     stages {
         stage('Build') {
             steps {
@@ -13,20 +16,17 @@ pipeline {
         }
         stage('Build Images') {
             steps {
-                script {
-                    commitId = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
-                }
                 sh """
                     cd accounts
-                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
+                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
                     cd ../authorization
-                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
+                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
                     cd ../config
-                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
+                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
                     cd ../exercises
-                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
+                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
                     cd ../web
-                    mvn dockerfile:build -Ddockerfile.tag=${commitId}
+                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
                 """
             }
         }
@@ -59,6 +59,7 @@ pipeline {
                         remote.user = username
                         remote.password = password
                     }
+                    sh 'envsubst < config/templates/deployment.yml.template > config/templates/deployment.yml'
                     sshPut remote: remote, from: 'config/templates', into: 'config'
                     sshCommand remote: remote, command: 'kubectl apply -f config/templates'
 

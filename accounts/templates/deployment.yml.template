@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: accounts
-        image: jpiecuch/accounts:123
+        image: jpiecuch/accounts:${COMMIT_ID}
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
