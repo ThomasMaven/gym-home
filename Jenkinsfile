@@ -57,7 +57,7 @@ pipeline {
                     script {
                         remote = [:]
                         remote.name = 'dev'
-                        remote.host = ${params.DevHost}
+                        remote.host = "${params.DevHost}"
                         remote.allowAnyHosts = true
                         remote.user = username
                         remote.password = password
