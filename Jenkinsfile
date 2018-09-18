@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'Dev Host', defaultValue: '127.0.0.1', description: 'Host name of DEV server')
+        string(name: 'DevHost', defaultValue: '127.0.0.1', description: 'Host name of DEV server')
     }
     environment {
         COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
@@ -57,7 +57,7 @@ pipeline {
                     script {
                         remote = [:]
                         remote.name = 'dev'
-                        remote.host = '127.0.0.1'
+                        remote.host = ${params.DevHost}
                         remote.allowAnyHosts = true
                         remote.user = username
                         remote.password = password
