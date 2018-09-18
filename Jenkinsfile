@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Component tests') {
             steps {
-                sh 'mvn clean package -Pcomponent-test'
+                sh 'mvn verify -Pcomponent-test'
             }
         }
         stage('Build Images') {
