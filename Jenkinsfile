@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'Dev Host', defaultValue: '127.0.0.1', description: 'Host name of DEV server')
+    }
     environment {
         COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
     }
