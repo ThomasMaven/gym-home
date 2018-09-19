@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
-        ORCHESTRATOR = ${params.Orchestrator}
+        ORCHESTRATOR = "${params.Orchestrator}"
     }
     stages {
         stage('Build') {
