@@ -6,6 +6,3 @@ metadata:
     app: accounts
 data:
   POSTGRES_DB: accounts
-  POSTGRESQL_USER: postgres
-  POSTGRESQL_PASSWORD: root
-  POSTGRESQL_DATABASE: accounts
