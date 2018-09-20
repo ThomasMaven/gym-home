@@ -5,7 +5,7 @@ import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
 import io.vertx.core.Vertx;
-import io.vertx.serviceproxy.ProxyHelper;
+import io.vertx.serviceproxy.ServiceBinder;
 import pl.jakubpiecuch.exercises.service.model.Exercise;
 import pl.jakubpiecuch.exercises.service.model.Page;
 
@@ -15,7 +15,9 @@ public class ExercisesServiceImpl implements ExercisesService {
 
     @Inject
     public ExercisesServiceImpl(Vertx vertx) {
-        ProxyHelper.registerService(ExercisesService.class, vertx, this, ExercisesService.class.getName());
+        new ServiceBinder(vertx)
+                .setAddress(ExercisesService.class.getName())
+                .register(ExercisesService.class, this);
     }
 
     @Override
