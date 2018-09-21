@@ -15,13 +15,26 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: ${DB_IMAGE}
+        image: centos/postgresql-96-centos7
         imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 5432
-        envFrom:
-        - configMapRef:
-            name: accounts-postgres-config
+        env:
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: accounts-postgres-secrets
+                key: postgresql_user
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: accounts-postgres-secrets
+                key: postgresql_password
+          - name: POSTGRESQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: accounts-postgres-secrets
+                key: postgresql_database
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: postgredb

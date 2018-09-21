@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: accounts-postgres
+spec:
+  selector:
+    matchLabels:
+      app: accounts-postgres
+  serviceName: accounts-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: accounts-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:10.4
+        imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: accounts-postgres-secrets
+                key: postgres_db
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgredb
+      volumes:
+      - name: postgredb
+        persistentVolumeClaim:
+          claimName: accounts-postgres-pv-claim
