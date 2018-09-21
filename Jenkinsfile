@@ -71,6 +71,7 @@ pipeline {
                     sh 'envsubst < accounts/templates/deployment.yml.template > accounts/templates/deployment.yml'
                     sh "envsubst < accounts/templates/statefulset.yml.template > accounts/templates/statefulset.yml"
                     sshPut remote: remote, from: 'accounts/templates', into: 'accounts'
+                    sshPut remote: remote, from: "accounts/templates-${params.Orchestrator}", into: "accounts-${params.Orchestrator}"
 
                     sh 'envsubst < authorization/templates/deployment.yml.template > authorization/templates/deployment.yml'
                     sshPut remote: remote, from: 'authorization/templates', into: 'authorization'
