@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: accounts-postgres-config
+  labels:
+    app: accounts
+data:
+  POSTGRESQL_USER: postgres
+  POSTGRESQL_PASSWORD: root
+  POSTGRESQL_DATABASE: accounts
