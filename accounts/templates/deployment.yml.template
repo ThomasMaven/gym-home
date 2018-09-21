@@ -37,3 +37,13 @@ spec:
             value: "false"
           - name: SPRING_CLOUD_BUS_ENABLED
             value: "false"
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: accounts-postgres-secrets
+                key: postgresql_user
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: accounts-postgres-secrets
+                key: postgresql_password
