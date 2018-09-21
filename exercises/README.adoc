@@ -52,9 +52,9 @@ Inside it calls proxy (lines 71-73)
 
 - Extend AbstractVerticle
 - Create Repository implementation (probably very similar to ExercisesServiceImpl as it will serve exercises details)
-- Register Repository as consumer on event bus (
+- Register Repository as consumer on event bus
 ** TIP: in repository constructor call this.vertx.eventBus().consumer(...),
-** you have set name and configure reply on event which will come to consumer,
+** you have to set name and configure reply on event which will come to consumer,
 be careful as you have to send message as JSON string because only then it can be successfully used by service,
 ** TIP: second argument in consumer method could be written as lambda)
 - Change implementation of method exercises in ExercisesServiceImpl
