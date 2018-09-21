@@ -7,6 +7,7 @@ pipeline {
     environment {
         COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
         ORCHESTRATOR = "${params.Orchestrator}"
+        DB_IMAGE = "${params.Orchestrator == 'kubernetes' ? 'postgres:10.4' : 'centos/postgresql-96-centos7'}"
     }
     stages {
         stage('Build') {
