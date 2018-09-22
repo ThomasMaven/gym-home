@@ -5,7 +5,7 @@ pipeline {
         choice(name: 'Orchestrator', choices: ['kubernetes', 'openshift'], description: 'Which orchestrator')
     }
     environment {
-        COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
+        COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim();
         ORCHESTRATOR = "${params.Orchestrator}"
         DB_IMAGE = "${params.Orchestrator == 'kubernetes' ? 'postgres:10.4' : 'centos/postgresql-96-centos7'}"
     }
@@ -28,8 +28,7 @@ pipeline {
         stage('Push Images') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
-                    sh """./mvn_steps.sh push_image ${env.COMMIT_ID} ${username} ${password}"""
-                    sleep 10000
+                    sh "./mvn_steps.sh push_image ${env.COMMIT_ID} ${username} ${password}"
                 }
             }
         }
