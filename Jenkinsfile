@@ -22,24 +22,13 @@ pipeline {
         }
         stage('Build Images') {
             steps {
-                sh './mvn_steps.sh build_image ${env.COMMIT_ID}'
+                sh "./mvn_steps.sh build_image ${env.COMMIT_ID}"
             }
         }
         stage('Push Images') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
-                    sh """
-                        cd accounts
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
-                        cd ../authorization
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
-                        cd ../config
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
-                        cd ../exercises
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
-                        cd ../web
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
-                    """
+                    sh "./mvn_steps.sh push_image ${env.COMMIT_ID} ${username} ${password}"
                 }
             }
         }
