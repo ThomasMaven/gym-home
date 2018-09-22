@@ -26,8 +26,6 @@ build_image() {
 
 push_image() {
     cd $1
-    echo $3
-    echo $4
     mvn dockerfile:push -Ddockerfile.username=$3 -Ddockerfile.password=$4
     cd ..
 }
@@ -39,8 +37,6 @@ iterate() {
     docker_password=$4
     for i in "${modules[@]}"
     do
-        echo $docker_user
-        echo $docker_password
         $step $i $commit $docker_user $docker_password
     done
 }
