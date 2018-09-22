@@ -28,7 +28,7 @@ pipeline {
         stage('Push Images') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
-                    sh "./mvn_steps.sh push_image ${env.COMMIT_ID} ${username} ${password}"
+                    sh """./mvn_steps.sh push_image ${env.COMMIT_ID} ${username} ${password}"""
                     sleep 10000
                 }
             }
