@@ -12,12 +12,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh './mvn_steps.sh build'
             }
         }
         stage('Component tests') {
             steps {
-                sh 'mvn verify -Pcomponent-test'
+                sh './mvn_steps.sh component_tests'
             }
         }
         stage('Build Images') {
@@ -41,15 +41,15 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
                     sh """
                         cd accounts
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
                         cd ../authorization
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
                         cd ../config
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
                         cd ../exercises
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
                         cd ../web
-                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddodckerfile.password=${password}
+                        mvn dockerfile:push -Ddockerfile.username=${username} -Ddockerfile.password=${password}
                     """
                 }
             }
