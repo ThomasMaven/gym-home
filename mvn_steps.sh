@@ -26,7 +26,7 @@ build_image() {
 
 push_image() {
     cd $1
-    mvn dockerfile:push -Ddockerfile.username=$3 -Ddockerfile.password=$4
+    ./mvnw dockerfile:push -Ddockerfile.username=$3 -Ddockerfile.password=$4
     cd ..
 }
 
