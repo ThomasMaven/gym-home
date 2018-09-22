@@ -22,18 +22,7 @@ pipeline {
         }
         stage('Build Images') {
             steps {
-                sh """
-                    cd accounts
-                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
-                    cd ../authorization
-                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
-                    cd ../config
-                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
-                    cd ../exercises
-                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
-                    cd ../web
-                    mvn dockerfile:build -Ddockerfile.tag=${env.COMMIT_ID}
-                """
+                sh './mvn_steps.sh build_image ${env.COMMIT_ID}'
             }
         }
         stage('Push Images') {
