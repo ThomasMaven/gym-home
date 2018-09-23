@@ -82,7 +82,7 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.4</version>
                 <configuration>
-                    <repository>jpiecuch/accounts</repository>
+                    <repository>jpiecuch/authorization</repository>
                 </configuration>
             </plugin>
         </plugins>
